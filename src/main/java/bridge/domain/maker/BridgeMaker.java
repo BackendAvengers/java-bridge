@@ -1,5 +1,6 @@
 package bridge.domain.maker;
 
+import bridge.domain.maker.constant.BridgeMakerErrorMessage;
 import bridge.domain.maker.support.BridgeMakeSupport;
 import bridge.domain.maker.support.CrossingStatus;
 
@@ -36,9 +37,9 @@ public class BridgeMaker {
         return Collections.unmodifiableList(bridge);
     }
 
-    private static void validateBridgeSize(int size) {
+    private void validateBridgeSize(int size) {
         if (size < 3 || size > 20) {
-            throw new IllegalArgumentException("[ERROR] 다리 길이는 3부터 20 사이의 숫자여야 합니다.");
+            throw new IllegalArgumentException(BridgeMakerErrorMessage.INVALID_BRIDGE_SIZE.getMessage());
         }
     }
 

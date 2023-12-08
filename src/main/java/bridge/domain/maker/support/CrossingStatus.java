@@ -1,5 +1,7 @@
 package bridge.domain.maker.support;
 
+import bridge.domain.maker.constant.BridgeMakerErrorMessage;
+
 import java.util.Arrays;
 
 public enum CrossingStatus {
@@ -19,6 +21,7 @@ public enum CrossingStatus {
                 .filter(s -> s.value == value)
                 .map(s -> s.symbol)
                 .findAny()
-                .orElseThrow(() -> new IllegalArgumentException("다리를 만들기 위해 필요한 값이 아닙니다."));
+                .orElseThrow(() -> new IllegalArgumentException(BridgeMakerErrorMessage.INVALID_BRIDGE_VALUE.getMessage()));
     }
+
 }
