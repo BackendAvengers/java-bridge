@@ -25,10 +25,17 @@ public enum BridgeMakeSupport {
     }
 
     private static void appendStatusToBridge(String status, StringBuilder bridgeBuilder) {
-        bridgeBuilder.deleteCharAt(bridgeBuilder.length() - 1);
-        bridgeBuilder.append(SEPARATOR.symbol);
-        bridgeBuilder.append(status);
-        bridgeBuilder.append(END.symbol);
+        bridgeBuilder.deleteCharAt(bridgeBuilder.length() - 1)
+        .append(SEPARATOR.symbol)
+        .append(status)
+        .append(END.symbol);
     }
 
+    public static String getSeparatorSymbol() {
+        return SEPARATOR.symbol;
+    }
+
+    public String getSymbol() {
+        return symbol;
+    }
 }

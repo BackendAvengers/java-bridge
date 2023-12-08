@@ -5,9 +5,13 @@ import bridge.domain.maker.constant.BridgeMakerErrorMessage;
 import java.util.Arrays;
 
 public enum CrossingStatus {
+
     UP("U", 1),
     DOWN("D", 0);
 
+    public static final String SUCCESS_SYMBOL = " O ";
+    public static final String FAIL_SYMBOL = " X ";
+    public static final String PASS_SYMBOL = "   ";
     private final String symbol;
     private final int value;
 
@@ -24,4 +28,11 @@ public enum CrossingStatus {
                 .orElseThrow(() -> new IllegalArgumentException(BridgeMakerErrorMessage.INVALID_BRIDGE_VALUE.getMessage()));
     }
 
+    public static boolean isUpSymbol(String symbol) {
+        return UP.symbol.equals(symbol);
+    }
+
+    public String getSymbol() {
+        return symbol;
+    }
 }
