@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 /**
@@ -76,8 +75,8 @@ public class BridgeMaker {
                         appendBridgeBuilder(downBridgeBuilder, symbol, unitBridge, CrossingStatus.PASS_SYMBOL);
                     }
                     if (CrossingStatus.DOWN.getSymbol().equals(symbol)){
-                        appendBridgeBuilder(downBridgeBuilder, symbol, unitBridge, CrossingStatus.SUCCESS_SYMBOL);
                         appendBridgeBuilder(upBridgeBuilder, symbol, unitBridge, CrossingStatus.PASS_SYMBOL);
+                        appendBridgeBuilder(downBridgeBuilder, symbol, unitBridge, CrossingStatus.SUCCESS_SYMBOL);
                     }
                 });
     }

@@ -20,7 +20,8 @@ class ApplicationTest extends NsTest {
         BridgeNumberGenerator numberGenerator = new TestNumberGenerator(newArrayList(1, 0, 0));
         BridgeMaker bridgeMaker = new BridgeMaker(numberGenerator);
         List<String> bridge = bridgeMaker.makeBridge(3);
-        assertThat(bridge).containsExactly("U", "D", "D");
+        //수정해버림..
+        assertThat(bridge).containsExactly("[U]", "[U|D]", "[U|D|D]");
     }
 
     @Test

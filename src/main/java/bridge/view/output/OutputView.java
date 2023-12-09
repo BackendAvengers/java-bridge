@@ -10,7 +10,8 @@ public class OutputView {
      * <p>
      * 출력을 위해 필요한 메서드의 인자(parameter)는 자유롭게 추가하거나 변경할 수 있다.
      */
-    public void printMap() {
+    public void printMap(String bridge) {
+        System.out.println(bridge);
     }
 
     /**
@@ -18,6 +19,15 @@ public class OutputView {
      * <p>
      * 출력을 위해 필요한 메서드의 인자(parameter)는 자유롭게 추가하거나 변경할 수 있다.
      */
-    public void printResult() {
+    public void printResult(String lastBridge, int attemptCount, boolean isSuccess) {
+        System.out.println(OutputMessage.RESULT.getMessage());
+        System.out.println(lastBridge);
+        if (isSuccess) {
+            System.out.println(OutputMessage.SUCCESS.getMessage());
+        }
+        if (!isSuccess) {
+            System.out.println(OutputMessage.FAIL.getMessage());
+        }
+        System.out.println(String.format(OutputMessage.ATTEMPT_COUNT.getMessage(), attemptCount));
     }
 }

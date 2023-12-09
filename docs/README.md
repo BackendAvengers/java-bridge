@@ -43,3 +43,22 @@
 - 다리의 시작은 [, 다리의 끝은 ]으로 표시
 - 다리 칸의 구분은 |(앞뒤 공백 포함) 문자열로 구분
 현재까지 건넌 다리를 모두 출력
+
+## 5시간 동안
+move 구현 retry 구현 X
+Controller retry 구분 로직 X
+테스트 X
+상수처리 X
+
+## 6시간 동안
+다리를.. U,D,D만 넣어도 되는지 몰라서... 요구사항 인지능력 최악.. 수정했음요
+```
+    @Test
+    void 다리_생성_테스트() {
+        BridgeNumberGenerator numberGenerator = new TestNumberGenerator(newArrayList(1, 0, 0));
+        BridgeMaker bridgeMaker = new BridgeMaker(numberGenerator);
+        List<String> bridge = bridgeMaker.makeBridge(3);
+        //수정해버림..
+        assertThat(bridge).containsExactly("[U]", "[U|D]", "[U|D|D]");
+    }
+```

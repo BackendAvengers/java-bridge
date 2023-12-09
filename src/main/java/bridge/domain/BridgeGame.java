@@ -11,8 +11,9 @@ import java.util.List;
 public class BridgeGame {
 
     private final BridgeMaker bridgeMaker;
-    private int attemptCount;
-    private final List<String> userSymbol = new ArrayList<>();
+    private int attemptCount = 1;
+    private List<String> userSymbol = new ArrayList<>();
+    private String lastBridge = "";
 
     public BridgeGame(BridgeMaker bridgeMaker) {
         this.bridgeMaker = bridgeMaker;
@@ -30,11 +31,19 @@ public class BridgeGame {
     public String move(String bridge, String symbol) {
         userSymbol.add(symbol);
 
-        char checkSymbol = bridge.charAt(bridge.length() - 2);
-        if (symbol.equals(String.valueOf(checkSymbol))) {
-            return bridgeMaker.successBridge(bridge, userSymbol);
+        if (isSuccessGame(bridge, symbol)) {
+            String lastBridge = bridgeMaker.successBridge(bridge, userSymbol);
+            this.lastBridge = lastBridge;
+            return lastBridge;
         }
-        return bridgeMaker.failBridge(bridge, userSymbol);
+        String lastBridge = bridgeMaker.failBridge(bridge, userSymbol);
+        this.lastBridge = lastBridge;
+        return lastBridge;
+    }
+
+    public boolean isSuccessGame(String bridge, String symbol) {
+        char checkSymbol = bridge.charAt(bridge.length() - 2);
+        return symbol.equals(String.valueOf(checkSymbol));
     }
 
     /**
@@ -43,6 +52,15 @@ public class BridgeGame {
      * 재시작을 위해 필요한 메서드의 반환 타입(return type), 인자(parameter)는 자유롭게 추가하거나 변경할 수 있다.
      */
     public void retry() {
+        attemptCount += 1;
+        userSymbol = new ArrayList<>();
     }
 
+    public int getAttemptCount() {
+        return attemptCount;
+    }
+
+    public String getLastBridge() {
+        return lastBridge;
+    }
 }
